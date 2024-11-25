@@ -37,8 +37,8 @@
                 <artifactId>azure-functions-maven-plugin</artifactId>
                 <version>1.10.0</version>
                 <configuration>
-                    <resourceGroup>your-resource-group</resourceGroup>
-                    <appName>${azure.app.name}</appName>
+                    <resourceGroup>sreefap_group</resourceGroup>
+                    <appName>sreefap</appName>
                     <region>East US</region>
                     <runtime>java</runtime>
                     <runtimeVersion>java8</runtimeVersion>
