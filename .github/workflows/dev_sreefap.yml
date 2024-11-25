@@ -33,6 +33,13 @@ jobs:
           mvn clean package
           popd
           echo ${{ env.PACKAGE_DIRECTORY }}
+      - name: 'Zip Function App'
+        shell: pwsh
+        run: |
+           # Create a ZIP file from the target/azure-functions folder (or wherever your function JAR is located)
+           New-Item -ItemType Directory -Force -Path './function-package'
+           Copy-Item './${{ env.POM_XML_DIRECTORY }}/target/azure-functions/*' -Destination './function-package'
+           Compress-Archive -Path './function-package/*' -DestinationPath './function-package.zip'
       - name: 'Run Azure Functions Action'
         uses: Azure/functions-action@v1
         id: fa
@@ -40,5 +47,5 @@ jobs:
           app-name: 'sreefap'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1361D07396374B8097D450BF12CAA058 }}
-          package: '/home/runner/work/SreeFunctionApp/SreeFunctionApp/target/java-azure-function-1.0-SNAPSHOT.jar'
+          package: './function-package.zip'
           respect-pom-xml: true
