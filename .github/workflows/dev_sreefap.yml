@@ -40,5 +40,5 @@ jobs:
           app-name: 'sreefap'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1361D07396374B8097D450BF12CAA058 }}
-          package: './target/azure-functions/my-java-function.jar'
+          package: '/home/runner/work/SreeFunctionApp/SreeFunctionApp/target/java-azure-function-1.0-SNAPSHOT.jar'
           respect-pom-xml: true
