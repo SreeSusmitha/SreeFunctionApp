@@ -38,7 +38,7 @@ jobs:
         run: |
            # Create a ZIP file from the target/azure-functions folder (or wherever your function JAR is located)
            New-Item -ItemType Directory -Force -Path './function-package'
-           Copy-Item './${{ env.POM_XML_DIRECTORY }}/target/azure-functions/*' -Destination './function-package'
+           Copy-Item './${{ env.POM_XML_DIRECTORY }}/target/*' -Destination './function-package'
            Compress-Archive -Path './function-package/*' -DestinationPath './function-package.zip'
       - name: 'Run Azure Functions Action'
         uses: Azure/functions-action@v1
